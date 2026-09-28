@@ -268,7 +268,201 @@ int randomNumber = (int)(Math.random() * 21) + 10;
         the Math class for calculations and how to generate random integers
         within a specific range.
     </p>
-    
+
+    <hr>
+
+    <h2>September 28, 2026 - Unit 1 Review (Sections 1.12–1.14)</h2>
+
+    <p>
+        These notes summarize the Java topics I studied in sections 1.12, 1.13,
+        and 1.14.
+    </p>
+
+    <h3>1.12 - Objects: Instances of Classes</h3>
+
+    <p>
+        I learned that a class is a blueprint used to create objects.
+        An object is an instance of a class. Objects can have attributes,
+        which store information about the object, and methods, which define
+        what the object can do.
+    </p>
+
+    <pre>
+Example:
+
+Class:
+Rectangle
+
+Object:
+rect1
+
+Attributes:
+width
+height
+
+Methods:
+move()
+set()
+toString()
+    </pre>
+
+    <p>
+        Different objects created from the same class can have the same attributes
+        but different values. For example, two Rectangle objects can both have
+        width and height attributes, but one rectangle can have a width of 5
+        while another can have a width of 10.
+    </p>
+
+    <p>
+        I also learned that object variables store references to objects in memory.
+        This means the variable points to the object rather than directly storing
+        all of the object's data.
+    </p>
+
+    <pre>
+Rectangle rect1 = new Rectangle(5, 8);
+    </pre>
+
+    <p>
+        In this example, Rectangle is the class, rect1 is the object reference
+        variable, and new Rectangle(5, 8) creates a new Rectangle object.
+    </p>
+
+    <h3>1.13 - Object Creation and Storage (Instantiation)</h3>
+
+    <p>
+        I learned that creating an object from a class is called instantiation.
+        The new keyword is used to create a new object, and a constructor is used
+        to initialize the object's attributes.
+    </p>
+
+    <pre>
+Student alan = new Student("Alan", "Turing", 11);
+    </pre>
+
+    <p>
+        In this example, Student is the class type, alan is the object reference,
+        new creates the object, and Student("Alan", "Turing", 11) calls the
+        constructor.
+    </p>
+
+    <p>
+        I learned that constructor arguments must match the constructor parameters
+        in number, order, and data type.
+    </p>
+
+    <pre>
+public Student(String firstName, String lastName, int gradeLevel)
+{
+    // Constructor code
+}
+    </pre>
+
+    <p>
+        I also learned about overloaded constructors. Constructor overloading means
+        having more than one constructor in the same class with different parameter
+        lists.
+    </p>
+
+    <pre>
+public Camera(String format, int zoom)
+{
+}
+
+public Camera(int pixels, int zoom)
+{
+}
+    </pre>
+
+    <p>
+        Java decides which constructor to use based on the arguments that are
+        provided when the object is created.
+    </p>
+
+    <h3>1.14 - Calling Instance Methods</h3>
+
+    <p>
+        I learned that an instance method is a method that belongs to a specific
+        object. Instance methods are called using the object name followed by a dot
+        and the method name.
+    </p>
+
+    <pre>
+point1.move(4, 5);
+
+balloon1.inflate(10);
+
+bottle.refill(0.5);
+    </pre>
+
+    <p>
+        These methods affect the specific object they are called on. For example,
+        balloon1.inflate(10) changes the radius of balloon1, but it does not change
+        another Balloon object.
+    </p>
+
+    <p>
+        I also learned the difference between instance methods and static methods.
+        Static methods belong to the class itself, while instance methods belong to
+        individual objects.
+    </p>
+
+    <pre>
+Math.sqrt(144);
+
+point1.move(4, 5);
+    </pre>
+
+    <p>
+        Math.sqrt() is a static method because it is called using the class name.
+        move() is an instance method because it is called using the object point1.
+    </p>
+
+    <p>
+        I also practiced method overloading. Method overloading allows multiple
+        methods to have the same name as long as they have different parameter lists.
+    </p>
+
+    <pre>
+bottle.refill(0.5);
+
+bottle.refill();
+    </pre>
+
+    <p>
+        The first version refills the bottle by a specific amount, while the second
+        version can refill it completely.
+    </p>
+
+    <p>
+        I also learned more about the toString() method. This method determines
+        what is displayed when an object is printed.
+    </p>
+
+    <pre>
+public String toString()
+{
+    return "(" + x + ", " + y + ")";
+}
+    </pre>
+
+    <p>
+        When an object is printed with System.out.println(), Java automatically
+        calls that object's toString() method.
+    </p>
+
+    <h3>What I Learned</h3>
+
+    <p>
+        After completing sections 1.12 through 1.14, I understand more clearly
+        how classes and objects work together in Java. I learned how objects are
+        created with constructors, how object references are stored, how overloaded
+        constructors work, and how instance methods can change the state of a
+        specific object. I also became more comfortable with calling methods on
+        objects and understanding the difference between instance methods and
+        static methods.
+    </p>
+
     <hr>
 
     <h2>September 21, 2026 - Project: Farmer Ryan</h2>
