@@ -1,0 +1,48 @@
+
+/*Programming Requirements
+1. Read the complete record as a String.
+2. Use String class methods, including substring(), to extract information from the record.
+3. Use Integer.parseInt() to convert the six numeric substrings to int values.
+4. Use arithmetic expressions to calculate the total.
+5. Use an explicit type conversion (casting) so that the average is calculated using decimal division.
+6. Do not use if statements, loops, arrays, or ArrayList. */
+
+
+import java.util.Scanner;
+public class MyProgram
+{
+    
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Enter the amount left in the first spool: ");
+        int num1 = input.nextInt();
+        
+        System.out.println("Enter the amount left in the second spool: ");
+        int num2 = input.nextInt();
+        
+        System.out.println("Enter the amount left in the third spool: ");
+        int num3 = input.nextInt();
+        
+        System.out.println("Enter the amount left in the fourth spool: ");
+        int num4 = input.nextInt();
+        
+        System.out.println("Enter the amount left in the fifth spool: ");
+        int num5 = input.nextInt();
+        
+        System.out.println("Enter the amount left in the sixth spool: ");
+        int num6 = input.nextInt();
+        
+        System.out.println("Enter the 3 digit material code: ");
+        System.out.println();
+        String code = input.nextLine();
+        
+        int total = num1 + num2 + num3 + num4 + num5 + num6;
+        
+        double avr = (num1 + num2 + num3 + num4 + num5 + num6) / 6; 
+        
+        
+        
+    }
+}
