@@ -1,0 +1,116 @@
+
+
+İLK SORU
+
+
+/*Programming Requirements
+1. Read the complete record as a String.
+2. Use String class methods, including substring(), to extract information from the record.
+3. Use Integer.parseInt() to convert the six numeric substrings to int values.
+4. Use arithmetic expressions to calculate the total.
+5. Use an explicit type conversion (casting) so that the average is calculated using decimal division.
+6. Do not use if statements, loops, arrays, or ArrayList. */
+
+
+import java.util.Scanner;
+public class MyProgram
+{
+    
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Enter the filament record: ");
+        String record = input.nextLine();
+        
+        // PLA - 420 - 275 - 610 - 350 - 495 - 251
+        // 012 3 456 7 89* 1 234 5 678 9 ?12 3 456
+        
+        int num1 = Integer.parseInt(record.substring(4,7));
+        int num2 = Integer.parseInt(record.substring(8,11));
+        int num3 = Integer.parseInt(record.substring(12,15));
+        int num4 = Integer.parseInt(record.substring(16,19));
+        int num5 = Integer.parseInt(record.substring(20,23));
+        int num6 = Integer.parseInt(record.substring(24));
+        
+        String code = record.substring(0,3);
+        
+        
+        int total = num1 + num2 + num3 + num4 + num5 + num6;
+        
+        double avr = (double) total / 6; 
+        
+        /*
+Material: PLA
+Total filament: 2401 grams
+Average per spool: 400.1666666666667 grams*/ 
+        
+        System.out.print(" Material: " + code + "\n" 
+        + "Total filament: " + total + "grams\n"
+        + "Average per spool: " + avr + "grams");
+        
+// Sedat hoca derste soru kolay dediğinde haklı olduğunu fark etiim. "Yalan" dediğim için özür dilemem lazım.
+// parseInt kullanımını öğrenmiş oldum. Bu methodu college boarddaki sorulara benzer sorularda kullanmak lazım.
+        
+    }
+}
+
+
+
+2. SORU
+
+import java.util.Scanner;
+
+public class Example
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Write the instructions: ");
+        String list = input.nextLine();
+        
+        //H02 B04 A02 W02 T01
+        //012 345 678 9*1 234
+        
+        String BS1 = list.substring(0,1);
+        String BS2 = list.substring(3,4);
+        String BS3 = list.substring(6,7);
+        String BS4 = list.substring(9,10);
+        String BS5 = list.substring(12,13);
+        
+        String SS1 = list.substring(1,3);
+        String SS2 = list.substring(4,6);
+        String SS3 = list.substring(7,9);
+        String SS4 = list.substring(10,12);
+        String SS5 = list.substring(13);
+        
+        String P1 = list.substring(0,3);
+        String P2 = list.substring(3,6);
+        String P3 = list.substring(6,9);
+        String P4 = list.substring(9,12);
+        String P5 = list.substring(12);
+        
+        int S1 = Integer.parseInt(list.substring(1,3));
+        int S2 = Integer.parseInt(list.substring(4,6));
+        int S3 = Integer.parseInt(list.substring(7,9));
+        int S4 = Integer.parseInt(list.substring(10,12));
+        int S5 = Integer.parseInt(list.substring(13));
+        
+        int Stotal = S1 + S2 + S3 + S4 + S5;
+        
+        
+        System.out.print("Block sequence: " + BS1 + BS2 + BS3 + BS4 + BS5 + "\n"
+        + "Studs sequence: " + SS1 + "-" + SS2 + "-" + SS3 + "-" + SS4 + "-" + SS5 + "\n" 
+        + "Reversed instructions: " + P5 + P4 + P3 + P2 + P1 + "\n"
+        + "Summery: " + BS1 + BS5 + Stotal);
+        
+        // Kod çalışıyor yapınca çok iyi hissettim. Mantığını anlayınca harbi baya kolay oluyormuş.
+        // Muhtemelen daha kısa bir şekilde yapılabilirdi bu ama şikayetçi değilim.
+        // Şu an kodda bence her şey çok net ve temiz duruyor. 
+        // Pratik yapmam lazım ki daha hızlı yapabileyim. 
+        
+    }
+}
+
+
