@@ -465,6 +465,64 @@ public String toString()
 
     <hr>
 
+    <h2>September 30, 2026 - Unit 1 Review (Section 1.15)</h2>
+
+    <p>
+        These notes summarize the Java topics I studied in section 1.15.
+    </p>
+
+    <h3>1.15 - String Methods</h3>
+
+    <p>
+        I learned how to use String methods such as length(), substring(),
+        indexOf(), equals(), and compareTo(). I also learned that String indexes
+        begin at 0, so the last character is always at index length() - 1.
+    </p>
+
+    <pre>
+String word = "computer";
+
+word.length();            // 8
+word.substring(0, 3);     // com
+word.substring(3);        // puter
+word.indexOf("put");      // 3
+word.equals("computer");  // true
+    </pre>
+
+    <p>
+        I learned that substring(start, end) includes the starting index but not
+        the ending index. Like Math intervals. The indexOf() method returns the first index where a
+        character or substring appears, or -1 if it is not found. The equals()
+        method compares two Strings and is case-sensitive.
+    </p>
+
+    <p>
+        I also learned that compareTo() compares Strings alphabetically. It
+        returns a negative value, 0, or a positive value depending on the order
+        of the Strings.
+    </p>
+
+    <pre>
+"apple".compareTo("banana");   // negative
+"apple".compareTo("apple");    // 0
+"banana".compareTo("apple");   // positive
+    </pre>
+
+    <p>
+        Strings are immutable, which means String methods do not change the
+        original String. I also practiced using concatenation and Integer.parseInt()
+        to convert numeric Strings into int values.
+    </p>
+
+    <h3>What I Learned</h3>
+
+    <p>
+        I became more comfortable working with Strings, indexes, substring(),
+        comparisons, concatenation, and converting String values into integers.
+    </p>
+
+    <hr>
+
     <h2>September 21, 2026 - Project: Farmer Ryan</h2>
 
     <h3>Project Description</h3>
