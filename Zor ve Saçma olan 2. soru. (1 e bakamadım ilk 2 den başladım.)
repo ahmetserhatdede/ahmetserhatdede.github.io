@@ -1,0 +1,95 @@
+public class MyProgram
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("What's your name? ");
+        String name1 = input.nextLine();
+        System.out.println("What's your priorety rate? ");
+        int priorety1 = input.nextInt();
+        
+        System.out.println("What's your name? ");
+        String name2 = input.nextLine();
+        System.out.println("What's your priorety rate? ");
+        int priorety2 = input.nextInt();
+        
+        System.out.println("What's your name? ");
+        String name3 = input.nextLine();
+        System.out.println("What's your priorety rate? ");
+        int priorety3 = input.nextInt();
+        
+        System.out.println("What's your name? ");
+        String name4 = input.nextLine();
+        System.out.println("What's your priorety rate? ");
+        int priorety4 = input.nextInt();
+        
+        if (priorety1 >5) || (priorety1 <1)
+        {
+            System.out.println("Invalid priorety");
+            
+        }
+        
+        if (priorety2 >5) || (priorety2 <1)
+        {
+            System.out.println("Invalid priorety");
+            
+        }
+        
+        if (priorety3 >5) || (priorey3 <1)
+        {
+            System.out.println("Invalid priorety");
+            
+        }
+        
+        if (priorety4 >5) || (priorety4 <1)
+        {
+            System.out.println("Invalid priorety");
+        }    
+        
+    }
+    
+    public static String sort(int a1, int a2, int a3, int a4) {
+        if (a1 > a2 && a2 > a3 && a3 > a4) return "1234";
+        if (a1 > a2 && a2 > a4 && a4 > a3) return "1243";
+        if (a1 > a3 && a3 > a2 && a2 > a4) return "1324";
+        if (a1 > a3 && a3 > a4 && a4 > a2) return "1342";
+        if (a1 > a4 && a4 > a2 && a2 > a3) return "1423";
+        if (a1 > a4 && a4 > a3 && a3 > a2) return "1432";
+    
+        if (a2 > a1 && a1 > a3 && a3 > a4) return "2134";
+        if (a2 > a1 && a1 > a4 && a4 > a3) return "2143";
+        if (a2 > a3 && a3 > a1 && a1 > a4) return "2314";
+        if (a2 > a3 && a3 > a4 && a4 > a1) return "2341";
+        if (a2 > a4 && a4 > a1 && a1 > a3) return "2413";
+        if (a2 > a4 && a4 > a3 && a3 > a1) return "2431";
+    
+        if (a3 > a1 && a1 > a2 && a2 > a4) return "3124";
+        if (a3 > a1 && a1 > a4 && a4 > a2) return "3142";
+        if (a3 > a2 && a2 > a1 && a1 > a4) return "3214";
+        if (a3 > a2 && a2 > a4 && a4 > a1) return "3241";
+        if (a3 > a4 && a4 > a1 && a1 > a2) return "3412";
+        if (a3 > a4 && a4 > a2 && a2 > a1) return "3421";
+    
+        if (a4 > a1 && a1 > a2 && a2 > a3) return "4123";
+        if (a4 > a1 && a1 > a3 && a3 > a2) return "4132";
+        if (a4 > a2 && a2 > a1 && a1 > a3) return "4213";
+        if (a4 > a2 && a2 > a3 && a3 > a1) return "4231";
+        if (a4 > a3 && a3 > a1 && a1 > a2) return "4312";
+        if (a4 > a3 && a3 > a2 && a2 > a1) return "4321";
+
+    }
+}
+
+// Önce soru 2 den başladım. Şu an bayaa sıkıntı var
+
+// return değeri String olmalı bunun için her farklı durum için ayrı çıktı ayarlamak lazım
+
+// Bunun üstüne birde bu yazdığımız if li conditionların dışındaki = olma olayları da var intlerin
+
+// bütün bunları değerlendirince yazacağımız kod çok fazla oluyor ve kafa karışıklığı yaşatmaya müsait hale geliyor.
+
+// Bu mattaki olsalık sorularına bahsediyor. Hani bunun yerine adı mehmet olan birisinin listede 3. sırada olma olasılığı nedir diye sorulsa aynı mantıkla çözmemiz gerekiyor.
+// ki bu soru bildiğimiz olimpiyat sorusu olurdu.
+
+// bence şu an ki bilgi birikimimiz bu soruyu efektif olarak çözmek için yetersiz.
