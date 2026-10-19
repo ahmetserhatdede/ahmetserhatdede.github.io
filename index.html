@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html>
@@ -572,15 +573,14 @@ boolean isLess = a < b;       // true
     </pre>
 
     <p>
-        Some relational operators I practiced are ==, !=, >, <, <=, and >=.
+        Some relational operators I practiced are ==, !=, &gt;, &lt;, &lt;=, and &gt;=.
         I also learned that methods can directly return boolean expressions.
-        
     </p>
 
     <pre>
 public static boolean isGreater(int a, int b)
 {
-    return a > b;
+    return a &gt; b;
 }
     </pre>
 
@@ -591,12 +591,13 @@ public static boolean isGreater(int a, int b)
         The code inside an if block runs when its condition is true. If the condition
         is false, the else block can run instead.
 
-        Moreover, we don't need ";" at the end of a if, else statement. We use "{ }" to write the condition.
-        Also we use "( )" to write the condition of if at the start. Such as "if (customerCount >= 8)"
+        Moreover, we don't need ";" at the end of a if, else statement. We use "{ }"
+        to write the code inside each branch. We use "( )" to write the condition
+        of an if statement, such as "if (customerCount &gt;= 8)".
     </p>
 
     <pre>
-if (number > 0)
+if (number &gt; 0)
 {
     System.out.println("The number is positive.");
 }
@@ -618,6 +619,103 @@ else
         After completing sections 2.1 through 2.3, I became more comfortable with
         algorithms, boolean expressions, relational operators, and decision-making
         using if and else statements.
+    </p>
+
+    <hr>
+
+    <h2>October 19, 2026 - Unit 2 Review (Sections 2.4–2.6)</h2>
+
+    <p>
+        These notes summarize the Java topics I studied in sections 2.4, 2.5,
+        and 2.6.
+    </p>
+
+    <h3>2.4 - Nested If Statements and Multiple Conditions</h3>
+
+    <p>
+        I learned that a nested if statement is an if statement placed inside
+        another if statement. I also practiced using if-else-if statements to
+        check several conditions in order. ONLY the first matching branch runs.
+    </p>
+
+    <pre>
+if (height &gt;= 42)
+{
+    if (age &gt;= 9)
+    {
+        System.out.println("Welcome aboard!");
+    }
+    else
+    {
+        System.out.println("Adult required.");
+    }
+}
+else
+{
+    System.out.println("Not eligible.");
+}
+    </pre>
+
+    <p>
+        Nested if statements are useful when one decision depends on another.
+        If-else-if chains are useful for classifying values into different ranges.
+    </p>
+
+    <h3>2.5 - Compound Boolean Expressions and Logical Operators</h3>
+
+    <p>
+        I learned how to combine Boolean expressions using the AND (&amp;&amp;),
+        OR (||), and NOT (!) operators. AND requires both conditions to be true,
+        OR requires at least one condition to be true, and NOT reverses a value.
+    </p>
+
+    <pre>
+boolean hasTicket = true;
+boolean isOldEnough = false;
+
+boolean canEnter = hasTicket &amp;&amp; isOldEnough;  // false
+boolean qualifies = hasTicket || isOldEnough; // true
+boolean tooYoung = !isOldEnough;              // true
+    </pre>
+
+    <p>
+        I also practiced using De Morgan's Laws and removing double negations
+        to simplify Boolean expressions without changing their results.
+    </p>
+
+    <pre>
+!(A &amp;&amp; B)  is equivalent to  !A || !B
+!(A || B)  is equivalent to  !A &amp;&amp; !B
+    </pre>
+
+    <h3>2.6 - Comparing Objects and Strings</h3>
+
+    <p>
+        I learned that == checks whether two object references point to the same
+        object. The equals() method can compare object contents or attributes,
+        depending on how the class defines it.
+    </p>
+
+    <pre>
+String first = new String("Java");
+String second = new String("Java");
+
+System.out.println(first == second);       // false
+System.out.println(first.equals(second));  // true
+    </pre>
+
+    <p>
+        I also learned that identical String literals can share an object in the
+        String pool, while new String() creates a separate object. Custom equals()
+        methods can compare attributes such as a Teacher's name and subject.
+    </p>
+
+    <h3>What I Learned</h3>
+
+    <p>
+        After completing sections 2.4 through 2.6, I became more comfortable
+        with nested conditions, compound Boolean expressions, De Morgan's Laws,
+        and the difference between reference equality and object equality.
     </p>
 
     <hr>
