@@ -720,6 +720,249 @@ System.out.println(first.equals(second));  // true
 
     <hr>
 
+    <h2>October 24, 2026 - Unit 2 Review (Sections 2.7–2.9)</h2>
+
+    <p>
+        These notes summarize the Java topics I studied in sections 2.7,
+        2.8, and 2.9, including while loops, for loops, iteration,
+        and algorithms involving repeated calculations.
+    </p>
+
+    <h3>2.7 - While Loops and Iteration</h3>
+
+    <p>
+        I learned that iteration means repeating a set of instructions.
+        A while loop repeats its code as long as its Boolean condition
+        remains true. The condition is checked before each iteration.
+    </p>
+
+    <pre>
+int counter = 1;
+
+while (counter &lt;= 5)
+{
+    System.out.println(counter);
+    counter++;
+}
+    </pre>
+
+    <p>
+        This loop prints the numbers from 1 to 5.
+        The counter increases by 1 after each iteration.
+        When counter becomes 6, the condition becomes false,
+        and the loop stops.
+    </p>
+
+    <p>
+        I also learned about infinite loops. An infinite loop occurs
+        when its stopping condition never becomes false.
+        We can prevent infinite loops by updating the variables
+        involved in the condition.
+    </p>
+
+    <pre>
+int timeLeft = 10;
+
+while (timeLeft &gt;= 0)
+{
+    System.out.println("Time remaining: " + timeLeft);
+    timeLeft--;
+}
+    </pre>
+
+    <p>
+        I practiced using break and return statements.
+        The break statement immediately exits a loop, while
+        return exits the entire method. These statements are
+        useful when a program needs to stop after a specific event.
+    </p>
+
+    <pre>
+while (true)
+{
+    int number = (int)(Math.random() * 10);
+
+    if (number == 7)
+    {
+        break;
+    }
+}
+    </pre>
+
+    <p>
+        In exercises such as Taffy Runner and Guess Everest Height,
+        I used while loops to repeatedly collect user input until
+        a required condition was satisfied.
+    </p>
+
+    <h3>2.8 - For Loops and Repeated Calculations</h3>
+
+    <p>
+        I learned that a for loop combines initialization,
+        a Boolean condition, and an update statement in one header.
+        It is especially useful when the number of iterations is
+        known before the loop begins.
+    </p>
+
+    <pre>
+for (int i = 1; i &lt;= 5; i++)
+{
+    System.out.println(i);
+}
+    </pre>
+
+    <p>
+        In this example, i starts at 1, the loop continues while
+        i is less than or equal to 5, and i++ increases i by 1.
+        I also practiced changing the increment to count by
+        different amounts or in descending order.
+    </p>
+
+    <pre>
+for (int i = 1; i &lt;= 100; i += 2)
+{
+    System.out.println(i);
+}
+    </pre>
+
+    <p>
+        This loop prints all odd numbers between 1 and 100.
+        I also learned how to use the remainder operator (%)
+        with if statements to check whether a number is
+        divisible by another number.
+    </p>
+
+    <pre>
+for (int i = 1; i &lt;= 20; i++)
+{
+    if (i % 3 == 0)
+    {
+        System.out.println(i);
+    }
+}
+    </pre>
+
+    <p>
+        I practiced using for loops in multiplication tables,
+        prime number checking, shopping carts, and dice
+        simulations. These activities helped me understand
+        how loops can process values and update counters.
+    </p>
+
+    <pre>
+int sixes = 0;
+
+for (int i = 1; i &lt;= 100; i++)
+{
+    int roll = (int)(Math.random() * 6) + 1;
+
+    if (roll == 6)
+    {
+        sixes++;
+    }
+}
+
+System.out.println("Number of sixes: " + sixes);
+    </pre>
+
+    <p>
+        Math.random() generates random values, while the counter
+        keeps track of how many times a specific result appears.
+        I also learned that loops can use multiplication,
+        division, and different update expressions instead
+        of only i++.
+    </p>
+
+    <h3>2.9 - Loop Algorithms and Practical Applications</h3>
+
+    <p>
+        I practiced using loops to solve problems involving
+        calculations, user input, and tracking changing values.
+        I learned that an accumulator stores a running total,
+        while a counter tracks how many times an event occurs.
+    </p>
+
+    <pre>
+int total = 0;
+
+for (int i = 1; i &lt;= 5; i++)
+{
+    total += i;
+}
+
+System.out.println(total); // 15
+    </pre>
+
+    <p>
+        I also learned how to calculate averages by dividing
+        an accumulated total by the number of valid inputs.
+        A sentinel value, such as -1 or 0, can be used to
+        signal when the user wants to stop entering values.
+    </p>
+
+    <pre>
+int max = 0;
+int number = 1;
+
+while (number != 0)
+{
+    if (number &gt; max)
+    {
+        max = number;
+    }
+
+    number = 0;
+}
+
+System.out.println(max);
+    </pre>
+
+    <p>
+        In the MaxMin exercise, I practiced tracking the
+        largest and smallest numbers entered by the user.
+        I also used integer division and the remainder
+        operator to extract digits from a number.
+    </p>
+
+    <pre>
+int number = 82675;
+
+while (number &gt; 0)
+{
+    int digit = number % 10;
+    System.out.println(digit);
+
+    number = number / 10;
+}
+    </pre>
+
+    <p>
+        This algorithm prints the digits in reverse order.
+        The remainder operator extracts the last digit,
+        while integer division removes it.
+    </p>
+
+    <p>
+        Other exercises, such as Donation Collection and
+        Running Average, showed me how loops can be used
+        to process multiple inputs and calculate results.
+    </p>
+
+    <h3>What I Learned</h3>
+
+    <p>
+        After completing sections 2.7 through 2.9, I became
+        more comfortable with while loops, for loops, iteration,
+        counters, accumulators, and stopping conditions.
+        I also practiced using break, return, Math.random(),
+        integer division, and the remainder operator.
+        These exercises helped me understand how to choose
+        the appropriate loop and use repeated operations
+        to solve practical programming problems.
+    </p>
+
+    <hr>
+    
     <h2>September 21, 2026 - Project: Farmer Ryan</h2>
 
     <h3>Project Description</h3>
