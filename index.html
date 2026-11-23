@@ -1091,6 +1091,308 @@ public static void findChar(String str, String key)
 
     <hr>
 
+    <h2>November 23, 2026 - Unit 3 Review (Sections 3.1–3.9)</h2>
+
+    <h3>3.1 - Abstraction and Program Design</h3>
+
+    <p>I start by defining the problem, identifying the objects, and deciding what data and behaviors belong in each class. Abstraction keeps the details that matter to the program and lets a caller use an operation without knowing its implementation.</p>
+    <p>In Public Library System, I designed Book, Member, and LibraryBranch. A branch keeps track of its books and members, and a member can borrow books. The lines in the class diagram show those relationships. Planning responsibilities first helped me see that a loan affects both a book's availability and a member's borrowed books.</p>
+
+    <pre>
+// A caller needs the operation and its argument.
+member.borrowBook(book);
+    </pre>
+
+    <p><strong>Additional Example - Design a school equipment checkout</strong></p>
+
+    <p>I put the availability field and the checkout rule in Equipment. The runner uses borrow() and receives a success or failure result. This keeps the checkout rule in one place.</p>
+
+    <pre>
+// Inside Equipment, which starts with available = true
+public boolean borrow()
+{
+    if (!available)
+    {
+        return false;
+    }
+    available = false;
+    return true;
+}
+
+// In the runner, call twice on the same object.
+System.out.println(camera.borrow()); // true
+System.out.println(camera.borrow()); // false
+    </pre>
+
+    <h3>3.2 - Impact of Program Design</h3>
+
+    <p>Reliable software should handle repeated requests, invalid inputs, and other edge cases. In the Cash App example, a repeated payment request could be handled by checking a transaction ID before charging again. The Chase example showed why verifying a deposit matters before releasing funds.</p>
+    <p>In Drone Delivery, I considered faster deliveries alongside noise, privacy, and safety concerns. In Virtual Pet, I credited Karel the Dog with the original link and date, documented the methods, and added a status option that shows the pet's stats without advancing time.</p>
+
+    <pre>
+// Inside the Virtual Pet menu loop
+if (choice == 5)
+{
+    pet.checkStatus();
+    continue;
+}
+    </pre>
+
+    <p><strong>Additional Example - Check the boundary before charging for a ticket</strong></p>
+
+    <p>A ticket kiosk should reject invalid quantities before calculating the total. I test the smallest valid quantity, zero, and a negative value so an invalid order cannot become a zero or negative charge.</p>
+
+    <pre>
+public static boolean isValidQuantity(int quantity)
+{
+    return quantity &gt; 0;
+}
+
+// 1 -&gt; true, 0 -&gt; false, -2 -&gt; false
+    </pre>
+
+    <h3>3.3 - Anatomy of a Class</h3>
+
+    <p>A class defines fields, constructors, and methods. Each object has its own instance fields. Encapsulation protects fields by keeping them private and giving callers public methods that control how they are read or changed.</p>
+    <p>In Circle Access, I made radius private and changed the runner to use setRadius(5). In Smart Lights, validateBrightness() stayed private so brightness checks happened inside the class. In Letter Grades, retakeExam() updates the score and then recalculates the letter grade so the two values stay consistent.</p>
+
+    <pre>
+private int score;
+private String letterGrade;
+
+public void retakeExam(int newScore)
+{
+    score = newScore;
+    updateLetterGrade();
+}
+    </pre>
+
+    <p><strong>Additional Example - Keep an account balance private</strong></p>
+
+    <p>Only deposit() can change the balance in this example. Its condition protects the stored value. After deposit(50) and deposit(-10), a new account still has a balance of 50.</p>
+
+    <pre>
+private int balance;
+
+public int getBalance()
+{
+    return balance;
+}
+
+public void deposit(int amount)
+{
+    if (amount &gt; 0)
+    {
+        balance += amount;
+    }
+}
+    </pre>
+
+    <h3>3.4 - Constructors</h3>
+
+    <p>A constructor has the class name and no return type. It runs when an object is created and sets the starting values of its fields. Java supplies an implicit no-argument constructor only when the class declares no constructors. Fields without initializers start with defaults such as 0, false, or null.</p>
+    <p>Overloaded constructors have different parameter lists. In Dog Class, the shorter constructor sets hasShots to false. In Batting Average, I stored name, hits, and at-bats in that order. The existing battingAverage() used floating-point division to return a decimal.</p>
+    <p>In Astronomy, I added a 30 km/s fallback for a negative starting speed. In Cookbooks and Recipes and Robot Competition, I created new Recipe and Kit objects from the incoming values so changes to one object's copy would stay independent.</p>
+
+    <pre>
+// Inside a Robot constructor, copy the starter kit's values.
+kit = new Kit(starterKit.getSensor(), starterKit.getGripper());
+    </pre>
+
+    <p><strong>Additional Example - Offer two ways to create a notebook</strong></p>
+
+    <p>The constructor with two arguments accepts a custom page count. The shorter one supplies 100. Java chooses a constructor based on the number and types of arguments.</p>
+
+    <pre>
+public class StudyNotebook
+{
+    private String subject;
+    private int totalPages;
+
+    public StudyNotebook(String subject, int totalPages)
+    {
+        this.subject = subject;
+        this.totalPages = totalPages;
+    }
+
+    public StudyNotebook(String subject)
+    {
+        this.subject = subject;
+        this.totalPages = 100;
+    }
+}
+
+// new StudyNotebook("Java") starts with 100 pages.
+// new StudyNotebook("Java", 40) starts with 40 pages.
+    </pre>
+
+    <h3>3.5 - Methods: How to Write Them</h3>
+
+    <p>Before writing a method, I decide what it receives, what state it changes, and what it returns. A getter reads data and a setter updates it. A void method returns no value. Every path through a non-void method must return a compatible value. Code after an unconditional return cannot run.</p>
+    <p>In Paint Can, I added getColor() and setColor(), then verified that the runner printed aqua. In Debugging Methods, I moved the grade increment before return, added a missing return path, and matched the getter, setter, and honor-roll method to their intended types.</p>
+    <p>In Distance Conversions, the conversion methods return new values while leaving kilometers stored in the object. In Dragon Class, I reused setLevel() when a dragon gained experience so crossing level 70 immediately updates its fire-breathing ability.</p>
+
+    <pre>
+public void setLevel(int newLevel)
+{
+    level = newLevel;
+    canBreatheFire = level &gt;= 70;
+}
+    </pre>
+
+    <p><strong>Additional Example - Choose a return type based on what the method does</strong></p>
+
+    <p>canBuy() answers a yes-or-no question. buy() can change the stored balance, so it uses void and reuses the check. With a balance of 20, buying at a price of 7 leaves 13. Trying to buy at a price of 20 after that leaves 13.</p>
+
+    <pre>
+public boolean canBuy(int price)
+{
+    return price &gt; 0 &amp;&amp; price &lt;= balance;
+}
+
+public void buy(int price)
+{
+    if (canBuy(price))
+    {
+        balance -= price;
+    }
+}
+    </pre>
+
+    <h3>3.6 - Methods: Passing and Returning References of an Object</h3>
+
+    <p>Java passes arguments by value. For an object, the copied value is a reference, so the caller's variable and the parameter can refer to the same object. Calling a setter through that reference can change the caller's object. Reassigning the parameter only changes the method's local reference. Returning an object returns a reference to it.</p>
+    <p>In Library, I used Book's public getter and setter to return a book. In sameGenre(), a method in Book can compare another Book's private genre directly because the field is declared in the same class.</p>
+    <p>In Point Utilities, the utility methods moved and reset the original point. In Digital Notebook, I limited the page change to the last page. In Skateboard Shop, I checked the sale quantity and available inventory before changing stock and sales totals.</p>
+
+    <pre>
+public static void movePoint(Point point, int dx, int dy)
+{
+    point.setX(point.getX() + dx);
+    point.setY(point.getY() + dy);
+}
+    </pre>
+
+    <p><strong>Additional Example - Predict the effect of mutation and reassignment</strong></p>
+
+    <p>Both methods receive a copy of the reference. move() uses it to change the original point. resetLocal() only changes which object its local parameter refers to. If the original point starts at [5, 10], the caller sees [8, 10] after both calls.</p>
+
+    <pre>
+public static void move(Point point)
+{
+    point.setX(point.getX() + 3);
+}
+
+public static void resetLocal(Point point)
+{
+    point = new Point(0, 0);
+}
+    </pre>
+
+    <h3>3.7 - Class Variables and Methods</h3>
+
+    <p>A static field is shared by all instances of a class. An instance field belongs to one object. A static final field works well for a shared constant, such as a membership limit. A static method can use class fields directly and can access instance data through an explicit object reference.</p>
+    <p>In School Clubs, totalClubs is shared, but each club has its own member count. In Player Stats, levelUp() updates the current player's level and increments one shared totalLevelUps counter. In Tournament, I used a shared count and a minimum of six teams.</p>
+    <p>In Bee Colony, each colony calculates its own production and contributes to a shared total. In Rock, Paper, Scissors, round wins belong to one game, while completed game wins are shared across sessions.</p>
+
+    <pre>
+private static int totalLevelUps = 0;
+private int level;
+
+public void levelUp()
+{
+    level++;
+    totalLevelUps++;
+}
+    </pre>
+
+    <p><strong>Additional Example - Compare a shared count with each object's data</strong></p>
+
+    <p>Every constructor call increments the same counter, while each object keeps its own title. After creating two tickets in a fresh run, calling Ticket.getCreated() returns 2.</p>
+
+    <pre>
+public class Ticket
+{
+    private static int created = 0;
+    private String title;
+
+    public Ticket(String title)
+    {
+        this.title = title;
+        created++;
+    }
+
+    public static int getCreated()
+    {
+        return created;
+    }
+}
+    </pre>
+
+    <h3>3.8 - Scope and Access</h3>
+
+    <p>Scope determines where a variable name can be used. Parameters are available inside their method or constructor. A local variable is available from its declaration through the end of its block. A loop counter declared in a for header is available in that loop, including nested blocks.</p>
+    <p>In Grocery Store, the parameter storeName shadowed the field, so I used this.storeName = storeName. The aisle counter belongs to the outer loop, and the shelf counter belongs to the inner loop. In Calculator, I removed a local total declaration that hid the field and used this.value to distinguish the field from the parameter.</p>
+    <p>In Order Up, I called helper methods and stored their return values as local variables. I passed the subtotal into the tax calculation and both values into the final amount calculation.</p>
+
+    <pre>
+double totalCost = calculateTotalCost();
+double taxAmount = calculateTax(totalCost);
+double finalAmount = calculateFinalAmount(totalCost, taxAmount);
+    </pre>
+
+    <p><strong>Additional Example - Fix a variable that goes out of scope</strong></p>
+
+    <p>I declare bonus before the if block because the return statement needs it. The default of 0 covers the case where the condition is false. The method returns 110 for (100, 5) and 100 for (100, 0).</p>
+
+    <pre>
+public static int addBonus(int score, int points)
+{
+    int bonus = 0;
+    if (points &gt; 0)
+    {
+        bonus = points * 2;
+    }
+    return score + bonus;
+}
+    </pre>
+
+    <h3>3.9 - this Keyword</h3>
+
+    <p>In an instance method, this refers to the object receiving the call. In a constructor, it refers to the object being initialized. In this.name = name, the left side is the field and the right side is the parameter. A static method has no current object, so this cannot be used there.</p>
+    <p>In Cardboard Boxes, box1.getLargerBox(box2) makes box1 the current object and box2 the argument. In Student Enrollment, I added printThis(), which prints the current student's toString() result. In Exercise Creation and Song Class, I used this.field to assign values from same-named parameters.</p>
+    <p>In Drone Tracking System, I updated the destination field before passing this to the control tower. The tower then reads the updated destination from that same Drone object.</p>
+
+    <pre>
+public void assignDestination(ControlTower ct, String destination)
+{
+    this.destination = destination;
+    ct.updateDroneLocation(this);
+}
+    </pre>
+
+    <p><strong>Additional Example - Return the current object from a comparison</strong></p>
+
+    <p>In high.higherScore(low), this refers to high. Returning this returns the existing high object. If the scores are equal, the method returns the object that received the call.</p>
+
+    <pre>
+// Inside a class named Player with an int field named score
+public Player higherScore(Player other)
+{
+    if (this.score &gt;= other.score)
+    {
+        return this;
+    }
+    return other;
+}
+    </pre>
+
+    <h3>What I Learned</h3>
+
+    <p>I learned to design a class by deciding what each object stores, which values the whole class shares, and which operations callers need. When debugging, I trace the current object, check where each variable was declared, and separate changes to a reference from changes to the object it points to.</p>
+
+    <hr>
+
     <h2>September 21, 2026 - Project: Farmer Ryan</h2>
 
     <h3>Project Description</h3>
